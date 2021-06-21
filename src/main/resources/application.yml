@@ -1,0 +1,21 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: root@2021
+        username: root
+        url: jdbc:mysql://localhost:3306/spring_security
+        hikari:
+            max-lifetime: 1200000
+            validation-timeout: 300000
+        type: com.zaxxer.hikari.HikariDataSource
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        
+oauth2:
+  clientId: backend-api
+  resourceId: abc
+  secret: 123
+
