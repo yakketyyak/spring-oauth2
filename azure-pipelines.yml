@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - script:  |
-      mvn -v
-      mvn clean install
-    displayName: 'Run a multi-line script'
+- script: |
+    mvn -v
+    mvn clean install
+  displayName: 'Run a multi-line script'
