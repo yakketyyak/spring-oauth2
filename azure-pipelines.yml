@@ -1,22 +1,8 @@
 pool:
-  vmImage: ubuntu-16.04
+  vmImage: ubuntu-latest
 
 steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*xml'
-    goals: 'package'
-- task: CopyFiles@2
-  inputs:
-    contents: 'target/*.jar'
-    targetFolder: $(Build.ArtifactStagingDirectory)
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: drop
+- script: mvn clean install -DskipTests
+  displayName: Maven clean install skip test
+- script: mvn test
+  displayName: Maven test
